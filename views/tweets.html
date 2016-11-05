@@ -1,0 +1,26 @@
+
+ <a href="#/tweets">Todos los tweets</a>
+
+<table class="table table">
+       <thead>
+            <tr class="info">
+                <th>usuario</th>
+                <th>fecha</th>
+                <th>text</th>
+
+            </tr>
+        </thead>
+        <tbody>
+      		<tr ng-repeat="tweet in tweets">
+				<td>
+					{{tweet.usuario}} 
+				</td>
+				<td>
+					{{tweet.fecha}}
+				</td>
+                <td>
+                    {{tweet.text}}
+                </td>
+			</tr>
+        </tbody>
+    </table>

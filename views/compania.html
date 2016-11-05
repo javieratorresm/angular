@@ -1,0 +1,26 @@
+
+ <a href="#/compania/vtr">VTR</a>
+
+<table class="table table">
+       <thead>
+            <tr class="info">
+                <th>usuario</th>
+                <th>fecha</th>
+                <th>text</th>
+
+            </tr>
+        </thead>
+        <tbody>
+      		<tr ng-repeat="compania in compania">
+				<td>
+					{{compania.usuario}} 
+				</td>
+				<td>
+					{{compania.fecha}}
+				</td>
+                <td>
+                    {{compania.text}}
+                </td>
+			</tr>
+        </tbody>
+    </table>
