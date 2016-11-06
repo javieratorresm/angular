@@ -21,14 +21,28 @@ var app = angular.module('angularSpa', [
         this.getWom = function(){
             return $http.get(urlBase+"/compañia/wom");
         };
+        //comuna nuñoa de vtr
         this.getCompaniacomuna = function(){
-            return $http.get(urlBase+"/compañia/vtr/comuna/nuñoa");
+            return $http.get(urlBase+"/compañias/vtr/comuna/nuñoa");
         };
         //este es desde el 16 de octubre en adelante
          this.getfecha = function(){
-            return $http.get(urlBase+"/compañia/vtr/periodo/inicio/16.10.2016");
+            return $http.get(urlBase+"/compañias/vtr/periodos/inicio/16.10.2016");
+        };
+                 this.getindiceentel = function(){
+            return $http.get(urlBase+"/indices/compañias/entel");
+        };
+                 this.getindicevtr= function(){
+            return $http.get(urlBase+"/indices/compañias/vtr");
+        };
+                 this.getindicemovistar = function(){
+            return $http.get(urlBase+"/indices/compañias/movistar");
+        };
+               this.getindicewom = function(){
+            return $http.get(urlBase+"/indices/compañias/wom");
         };
     })
+
 
     .config(function($routeProvider){
         $routeProvider
@@ -71,7 +85,28 @@ var app = angular.module('angularSpa', [
      .when('/compania/vtr/fecha/16102016',{
             templateUrl: 'views/comuna.html',
             controller: 'fechaCtrl'
-        })
+        }) 
+     .when ('/indice/compania/movistar',{
+            templateUrl:'views/movistarindice.html',
+            controller:'indiceCtrl'
+
+     })
+     .when ('/indice/compania/vtr',{
+            templateUrl:'views/indice.html',
+            controller:'indiceCtrl'
+
+     })
+      
+       .when ('/indice/compania/wom',{
+            templateUrl:'views/womindice.html',
+            controller:'indiceCtrl'
+
+     })
+        .when ('/indice/compania/entel',{
+            templateUrl:'views/indice.html',
+            controller:'indiceCtrl'
+
+     })
         .otherwise({
             redirectTo: '/home'
           });

@@ -1,0 +1,31 @@
+ <a href="#/indice/compania/"></a>
+
+<table class="table table">
+       <thead>
+            <tr class="info">
+                <th>buenos</th>
+                <th>desaprobacion</th>
+                <th>malos</th>
+                <th>proporcion</th>
+      
+            </tr>
+        </thead>
+        <tbody>
+      		<tr >
+            <td>
+                    {{indice.buenos }} 
+                </td>
+                <td>
+                    {{indice.desaprobacion | number:2}} 
+                </td>
+                <td>
+                    {{indice.malos}} 
+                </td>
+				<td>
+					{{indice.proporcion | number:2}} 
+				</td>
+  
+
+			</tr>
+        </tbody>
+    </table>
