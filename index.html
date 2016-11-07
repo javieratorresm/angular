@@ -32,6 +32,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+	
     </head>
 
 <body ng-app="angularSpa" ng-cloak>
@@ -97,16 +99,16 @@
                             <a href="#"><i class="fa fa fa-industry fa-fw"></i> Compañias <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="entel.html">Entel</a>
+                                    <a href="#/compania/entel">Entel</a>
                                 </li>
                                 <li>
-                                    <a href="movistar.html">Movistar</a>
+                                    <a href="#/compania/movistar">Movistar</a>
                                 </li>
                                 <li>
-                                    <a href="claro.html">Claro</a>
+                                    <a href="#/compania/claro">Claro</a>
                                 </li>
                                 <li>
-                                    <a href="wom.html">WOM</a>
+                                    <a href="#/compania/wom">WOM</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -114,8 +116,8 @@
 
                         <li><a href="#/home">Inicio</a></li>
                         <li><a href="#/tweets">tweets</a></li>
-                        <li><a href="#/tweets/compania/vtr">vtr </a></li>
-                        <li><a href="#/tweets/compania/movistar">movistar </a></li>
+                        <li><a href="#/compania/vtr">vtr </a></li>
+                        <li><a href="#/compania/movistar">movistar </a></li>
                         
                     </ul>
                 </div>
@@ -131,7 +133,7 @@
 
     </div>
 
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"   integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="   crossorigin="anonymous"></script>
+
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
@@ -158,12 +160,16 @@
     <script src="vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="vendor/raphael/raphael.min.js"></script>
-    <script src="vendor/morrisjs/morris.min.js"></script>
-    <script src="data/morris-data.js"></script>
-
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
+<script src="d3.min.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="nv.d3.min.css">
+	
+	<script type="text/javascript" src="nv.d3.min.js"></script>
 
+    <script src="vendor/tabs.js"></script>
 </body>
 </html>

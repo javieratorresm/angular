@@ -1,7 +1,10 @@
 app.controller('MainCtrl', function($scope){
-	$scope.items = [
-      'Angular JS',
-      'Sass',
-      'NPM'
+	
+	var arreglo = [
+    { "key": "Movistar", "value" : 13 },
+    { "key": "Entel", "value" : 73 },
+    { "key": "Claro", "value" : 32 },
+    { "key": "VTR", "value" : 90 },
+    { "key": "WOM", "value" : 30 }
     ];
 });

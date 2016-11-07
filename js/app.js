@@ -2,28 +2,28 @@ var app = angular.module('angularSpa', [
     'ngRoute'
     ])
     .service('ConsultaService', function($http){
-        var urlBase = 'http://jakane:8080/grupo_tbd2-master/tweets';
+        var urlBase = 'http://localhost:8080/grupo_tbd2-master/tweets';
         this.getTweets = function(){
             return $http.get(urlBase);
         };
         this.getCompania = function(){
-            return $http.get(urlBase+"/compañia/vtr");
+            return $http.get(urlBase+"/compañias/vtr");
         };
         this.getMovistar = function(){
-            return $http.get(urlBase+"/compañia/movistar");
+            return $http.get(urlBase+"/compañias/movistar");
         };
          this.getEntel = function(){
-            return $http.get(urlBase+"/compañia/entel");
+            return $http.get(urlBase+"/compañias/entel");
         };
         this.getClaro = function(){
-            return $http.get(urlBase+"/compañia/claro");
+            return $http.get(urlBase+"/compañias/claro");
         };
         this.getWom = function(){
-            return $http.get(urlBase+"/compañia/wom");
+            return $http.get(urlBase+"/compañias/wom");
         };
         //comuna nuñoa de vtr
         this.getCompaniacomuna = function(){
-            return $http.get(urlBase+"/compañias/vtr/comuna/nuñoa");
+            return $http.get(urlBase+"/compañias/vtr/comunas/nuñoa");
         };
         //este es desde el 16 de octubre en adelante
          this.getfecha = function(){

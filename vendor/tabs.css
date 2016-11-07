@@ -1,3 +1,25 @@
+.mydiv{
+
+  height: 100%; overflow: auto;
+}
+.mydiv tr {
+width: 100%;
+display: inline-table;
+table-layout: fixed;
+  
+}
+
+.mydiv table{
+ height:360px; 
+ display: -moz-groupbox;
+}
+.mydiv tbody{
+  overflow-y: scroll;
+  height: 320px;
+  width: 93.7%;
+  position: absolute;
+}
+
 .nav-tabs-dropdown {
   display: none;
   border-bottom-left-radius: 0;
