@@ -91,28 +91,28 @@ var app = angular.module('angularSpa', [
         }) 
      .when ('/indice/compania/movistar',{
             templateUrl:'views/movistarindice.html',
-            controller:'indiceCtrl'
+            controller:'indiceCtrlMovistar'
 
      })
      .when ('/indice/compania/vtr',{
             templateUrl:'views/indice.html',
-            controller:'indiceCtrl'
+            controller:'indiceCtrlVtr'
 
      })
       
        .when ('/indice/compania/wom',{
             templateUrl:'views/womindice.html',
-            controller:'indiceCtrl'
+            controller:'indiceCtrlWom'
 
      })
         .when ('/indice/compania/entel',{
             templateUrl:'views/indice.html',
-            controller:'indiceCtrl'
+            controller:'indiceCtrlEntel'
 
      })
         .when ('/indice/compania/claro',{
             templateUrl:'views/indice.html',
-            controller:'indiceCtrl'
+            controller:'indiceCtrlClaro'
 
      })
         .otherwise({
