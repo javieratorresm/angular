@@ -90,7 +90,7 @@ var app = angular.module('angularSpa', [
             controller: 'fechaCtrl'
         }) 
      .when ('/indice/compania/movistar',{
-            templateUrl:'views/movistarindice.html',
+            templateUrl:'views/indice.html',
             controller:'indiceCtrlMovistar'
 
      })
@@ -101,7 +101,7 @@ var app = angular.module('angularSpa', [
      })
       
        .when ('/indice/compania/wom',{
-            templateUrl:'views/womindice.html',
+            templateUrl:'views/indice.html',
             controller:'indiceCtrlWom'
 
      })

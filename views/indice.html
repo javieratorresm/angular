@@ -3,27 +3,29 @@
 <table class="table table">
        <thead>
             <tr class="info">
-                <th>buenos</th>
+                
                 <th>desaprobacion</th>
-                <th>malos</th>
                 <th>proporcion</th>
+                <th>malos</th>
+                <th>buenos</th>
       
             </tr>
         </thead>
         <tbody>
       		<tr >
-            <td>
-                    {{indice.buenos }} 
+                <td>
+                    {{(indice.desaprobacion | number:2) *100}}% 
                 </td>
                 <td>
-                    {{indice.desaprobacion | number:2}} 
+                    {{indice.proporcion | number:2}} 
                 </td>
                 <td>
                     {{indice.malos}} 
                 </td>
-				<td>
-					{{indice.proporcion | number:2}} 
-				</td>
+                <td>
+                    {{indice.buenos }} 
+                </td>
+				
   
 
 			</tr>

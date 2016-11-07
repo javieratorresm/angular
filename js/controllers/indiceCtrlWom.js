@@ -1,4 +1,4 @@
-app.controller('indiceCtrl', function($scope,ConsultaService){
+app.controller('indiceCtrlWom', function($scope,ConsultaService){
     $scope.indice = [
 
 
