@@ -41,6 +41,9 @@ var app = angular.module('angularSpa', [
                this.getindicewom = function(){
             return $http.get(urlBase+"/indices/compañias/wom");
         };
+             this.getindiceclaro = function(){
+            return $http.get(urlBase+"/indices/compañias/claro");
+        };
     })
 
 
@@ -103,6 +106,11 @@ var app = angular.module('angularSpa', [
 
      })
         .when ('/indice/compania/entel',{
+            templateUrl:'views/indice.html',
+            controller:'indiceCtrl'
+
+     })
+        .when ('/indice/compania/claro',{
             templateUrl:'views/indice.html',
             controller:'indiceCtrl'
 
