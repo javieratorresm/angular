@@ -1,11 +1,7 @@
 app.controller('indiceCtrlClaro', function($scope,ConsultaService){
-    $scope.indice = [
-
-
-
-    ];
+    $scope.indice = [];
        
-       function getindiceclaro(){
+       function getindiceClaro(){
             ConsultaService.getindiceclaro()
             .success(function(data){
                 $scope.indice = data;
@@ -16,5 +12,5 @@ app.controller('indiceCtrlClaro', function($scope,ConsultaService){
                 console.log('error');
             });
         }
-        getindiceclaro();
+        getindiceClaro();
 });

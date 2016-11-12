@@ -1,7 +1,7 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'run', 'build-css' ]
-2 info using npm@2.15.9
-3 info using node@v4.6.1
+2 info using npm@2.15.11
+3 info using node@v4.6.2
 4 verbose run-script [ 'prebuild-css', 'build-css', 'postbuild-css' ]
 5 info prebuild-css simple-angular-template@1.0.0
 6 info build-css simple-angular-template@1.0.0
@@ -15,14 +15,14 @@
 9 verbose stack     at ChildProcess.<anonymous> (/usr/lib/node_modules/npm/lib/utils/spawn.js:24:14)
 9 verbose stack     at emitTwo (events.js:87:13)
 9 verbose stack     at ChildProcess.emit (events.js:172:7)
-9 verbose stack     at maybeClose (internal/child_process.js:829:16)
-9 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+9 verbose stack     at maybeClose (internal/child_process.js:854:16)
+9 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:222:5)
 10 verbose pkgid simple-angular-template@1.0.0
-11 verbose cwd /home/sebastian/tbd_2016/angular
-12 error Linux 4.4.0-45-generic
+11 verbose cwd /home/sebastian/tbd_2016/FRONT-END/angular
+12 error Linux 4.4.0-47-generic
 13 error argv "/usr/bin/nodejs" "/usr/bin/npm" "run" "build-css"
-14 error node v4.6.1
-15 error npm  v2.15.9
+14 error node v4.6.2
+15 error npm  v2.15.11
 16 error code ELIFECYCLE
 17 error simple-angular-template@1.0.0 build-css: `node-sass --include-path scss ./styles/main.scss   ./styles/main.css`
 17 error Exit status 1

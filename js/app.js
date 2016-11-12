@@ -1,6 +1,5 @@
-var app = angular.module('angularSpa', [
-    'ngRoute'
-    ])
+var app = angular.module('angularSpa', ['ngRoute','nvd3'])
+
     .service('ConsultaService', function($http){
         var urlBase = 'http://localhost:8080/grupo_tbd2-master/tweets';
         this.getTweets = function(){
@@ -51,7 +50,7 @@ var app = angular.module('angularSpa', [
         $routeProvider
         .when('/home', {
             templateUrl: 'views/main.html',
-            controller: 'MainCtrl'
+            controller: 'myCtrl'
           })
         .when('/about', {
             templateUrl: 'views/about.html',

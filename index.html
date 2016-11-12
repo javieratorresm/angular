@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8">  <!-- it's important for d3.js -->
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -51,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Nombre App</a>
+                <a href="index.html"> <img src="img/logov2.png" height="50"></img></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -179,6 +180,7 @@
 <script src="js/controllers/indiceCtrlClaro.js"></script>
 <script src="js/controllers/indiceCtrlWom.js"></script>
 <script src="js/controllers/indiceCtrlMovistar.js"></script>
+<script src="js/controllers/myCtrl.js"></script>
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -191,15 +193,19 @@
 
     <!-- Morris Charts JavaScript -->
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
-<script src="d3.min.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="nv.d3.min.css">
-	
-	<script type="text/javascript" src="nv.d3.min.js"></script>
 
     <script src="vendor/tabs.js"></script>
+
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/build/nv.d3.js"></script> <!-- or use another assembly -->
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+    <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css">
+
 </body>
 </html>
