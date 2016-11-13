@@ -1,6 +1,6 @@
 var app = angular.module('angularSpa', ['ngRoute','nvd3'])
 
-    .service('ConsultaService', function($http){
+    .service('ConsultaService', function($http,$q){
         var urlBase = 'http://localhost:8080/grupo_tbd2-master/tweets';
         this.getTweets = function(){
             return $http.get(urlBase);
@@ -42,7 +42,19 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3'])
         };
              this.getindiceclaro = function(){
             return $http.get(urlBase+"/indices/compañias/claro");
+            //return ({method:"GET",async: false, url:urlBase+"/indices/compañias/claro"});
         };
+             this.getindiceclaro1 = function(){
+            var defered = $q.defer();
+            //var promise = defered.promise;
+            $http.get(urlBase+"/indices/compañias/claro")
+                .success(function(data) {
+                    defered.resolve(data);
+                });
+
+            return defered.promise;
+        };
+
     })
 
 
@@ -50,6 +62,7 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3'])
         $routeProvider
         .when('/home', {
             templateUrl: 'views/main.html',
+            controllerAs: 'vm',
             controller: 'myCtrl'
           })
         .when('/about', {
