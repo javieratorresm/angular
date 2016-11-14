@@ -1,21 +1,50 @@
 app.controller('indiceCtrlWom', function($scope,ConsultaService){
-    $scope.indice = [
-
-
-
-    ];
     
+    $scope.data1 = 0;
+    $scope.indice = [];
+       
+    function datosWom(){
+        ConsultaService.getindicewom().then(function(wom){
+            $scope.data1 = [
+                {
+                    key: "Positivos",
+                    y: wom.data.buenos,
+                    color: '#691f78'
+                },
+                {
+                    key: "Negativos",
+                    y: wom.data.malos,
+                    color: '#ecb0fc'
+                }
+            ]
+            $scope.indice = wom.data;
 
- function getindicewom(){
-            ConsultaService.getindicewom()
-            .success(function(data){
-                $scope.indice = data;
-                                console.log('data',data);
-            })
-            .error(function(error){
-                $scope.status = 'Error al consultar';
-                console.log('error');
-            });
-        }
-        getindicewom();
+        });
+    }datosWom();
+
+    
+       
+      
+
+
+        $scope.options= {
+            chart: {
+                type: 'pieChart',
+                height: 500,
+                x: function(d){return d.key;},
+                y: function(d){return d.y;},
+                showLabels: true,
+                duration: 500,
+                labelThreshold: 0.01,
+                labelSunbeamLayout: true,
+                legend: {
+                    margin: {
+                        top: 5,
+                        right: 35,
+                        bottom: 5,
+                        left: 0
+                    }
+                }
+            }
+        };
 });

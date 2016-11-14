@@ -66,8 +66,7 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3'])
         $routeProvider
         .when('/home', {
             templateUrl: 'views/main.html',
-            controllerAs: 'ctrl',
-            controller: 'lineChart'
+            controller: 'main'
           })
         .when('/about', {
             templateUrl: 'views/about.html',
