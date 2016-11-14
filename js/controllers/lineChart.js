@@ -87,7 +87,7 @@ function valoresGrafico(){
 
   ctrl.options = {
             chart: {
-                type: 'lineChart',
+                type: 'lineWithFocusChart',
                 height: 450,
                 margin : {
                     top: 20,
@@ -97,7 +97,7 @@ function valoresGrafico(){
                 },
                 x: function(d){ return d.x; },
                 y: function(d){ return d.y; },
-                useInteractiveGuideline: true,
+                useInteractiveGuideline: false,
                 dispatch: {
                     stateChange: function(e){ console.log("stateChange"); },
                     changeState: function(e){ console.log("changeState"); },
