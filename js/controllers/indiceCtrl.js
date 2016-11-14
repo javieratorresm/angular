@@ -43,4 +43,7 @@ app.controller('indiceCtrl', function($scope,ConsultaService){
             });
         }
         getindicewom();
+
+
+    
 });

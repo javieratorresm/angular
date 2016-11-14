@@ -42,17 +42,21 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3'])
         };
              this.getindiceclaro = function(){
             return $http.get(urlBase+"/indices/compañias/claro");
-            //return ({method:"GET",async: false, url:urlBase+"/indices/compañias/claro"});
         };
-             this.getindiceclaro1 = function(){
-            var defered = $q.defer();
-            //var promise = defered.promise;
-            $http.get(urlBase+"/indices/compañias/claro")
-                .success(function(data) {
-                    defered.resolve(data);
-                });
-
-            return defered.promise;
+              this.getindiceentelPeriodo = function(dia,mes,año,dia2,mes2,año2){
+            return $http.get(urlBase+"/indices/compañias/entel/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia2+"."+mes2+"."+año2);
+        };
+              this.getindicevtrPeriodo= function(dia,mes,año,dia2,mes2,año2){
+            return $http.get(urlBase+"/indices/compañias/vtr/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia2+"."+mes2+"."+año2);
+        };
+              this.getindicemovistarPeriodo = function(dia,mes,año,dia2,mes2,año2){
+            return $http.get(urlBase+"/indices/compañias/movistar/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia2+"."+mes2+"."+año2);
+        };
+              this.getindicewomPeriodo = function(dia,mes,año,dia2,mes2,año2){
+            return $http.get(urlBase+"/indices/compañias/wom/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia2+"."+mes2+"."+año2);
+        };
+             this.getindiceclaroPeriodo = function(dia,mes,año,dia2,mes2,año2){
+            return $http.get(urlBase+"/indices/compañias/claro/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia2+"."+mes2+"."+año2);
         };
 
     })
@@ -62,8 +66,8 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3'])
         $routeProvider
         .when('/home', {
             templateUrl: 'views/main.html',
-            controllerAs: 'vm',
-            controller: 'myCtrl'
+            controllerAs: 'ctrl',
+            controller: 'lineChart'
           })
         .when('/about', {
             templateUrl: 'views/about.html',
