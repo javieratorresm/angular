@@ -19,8 +19,19 @@
 			<div class="panel-heading">
 		        <i class="fa fa-sort-amount-desc""></i>  Porcentaje desaprobación de compañias en el tiempo
 		    </div>
-		                        <!-- /.panel-heading -->
+		    
+
+		    <div class="col-lg-6" align="center">
+		    	Seleccione fecha inicio:
+		    	<md-datepicker ng-model="inicio" md-placeholder="Seleccione fecha inicio"></md-datepicker>
+		    </div>
+		    <div class="col-lg-6" align="center">
+		    	Seleccione fecha fin:
+		    	<md-datepicker ng-model="fin" md-placeholder="Seleccione fecha fin"></md-datepicker>
+		    </div>
+		    
 		    <div class="panel-body">
+
 				<nvd3 options="options" data="data"></nvd3>
 
 			</div>

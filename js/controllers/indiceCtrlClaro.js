@@ -22,6 +22,28 @@ app.controller('indiceCtrlClaro', function($scope,ConsultaService){
         });
     }datosClaro();
 
+
+
+$scope.callback = function(scope, element){
+  // Add a click event
+  d3.selectAll('.nv-slice').on('click', function(){
+    d3.selectAll('.nvtooltip').each(function(){
+        console.log("APRIETATECTM")
+        this.style.setProperty('display', 'block', 'important');
+    });
+  });
+  // Clear tooltip on mouseout
+  d3.selectAll('.nv-slice').each(function(){
+    this.addEventListener('mouseout', function(){
+        d3.selectAll('.nvtooltip').each(function(){
+            this.style.setProperty('display', 'none', 'important');
+        });
+    }, false);
+  });
+  // we use foreach and event listener because the on('mouseout')
+  // was overidding some other function
+};
+
   
         $scope.options = {
             chart: {

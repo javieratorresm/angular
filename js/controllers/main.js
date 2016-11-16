@@ -1,12 +1,20 @@
 app.controller('main', function($scope,ConsultaService,$q) {
 
+$scope.fin = new Date();
+$scope.inicio = new Date($scope.fin.getFullYear(),
+      $scope.fin.getMonth() - 1,
+      $scope.fin.getDate());
+
 $scope.data = 0;
+
+console.log("Fecha: "+$scope.inicio.getDate()+" "+$scope.inicio.getMonth()+" "+$scope.inicio.getFullYear());
+console.log("Fecha: "+$scope.fin.getDate()+" "+$scope.fin.getMonth()+" "+$scope.fin.getFullYear());
 function valoresGrafico(){
-            ConsultaService.getindiceclaroPeriodo(1,10,2016,13,11,2016).then(function(claro){
-                ConsultaService.getindicemovistarPeriodo(1,10,2016,13,11,2016).then(function(movistar){
-                    ConsultaService.getindiceentelPeriodo(1,10,2016,13,11,2016).then(function(entel){
-                        ConsultaService.getindicewomPeriodo(1,10,2016,13,11,2016).then(function(wom){
-                            ConsultaService.getindicevtrPeriodo(1,10,2016,13,11,2016).then(function(vtr){
+            ConsultaService.getindiceclaroPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth(),$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth(),$scope.fin.getFullYear()).then(function(claro){
+                ConsultaService.getindicemovistarPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth(),$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth(),$scope.fin.getFullYear()).then(function(movistar){
+                    ConsultaService.getindiceentelPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth(),$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth(),$scope.fin.getFullYear()).then(function(entel){
+                        ConsultaService.getindicewomPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth(),$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth(),$scope.fin.getFullYear()).then(function(wom){
+                            ConsultaService.getindicevtrPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth(),$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth(),$scope.fin.getFullYear()).then(function(vtr){
                                 console.log(movistar);
                                 var movistarData=[],claroData=[],vtrData=[],womData=[],entelData=[];
                                 var i = 1;
@@ -144,6 +152,8 @@ function valoresGrafico(){
                     bottom: 40,
                     left: 55
                 },
+
+                interpolate: "cardinal",
                 x: function(d){ return d.x; },
                 y: function(d){ return d.y; },
                 useInteractiveGuideline: false,
@@ -151,8 +161,17 @@ function valoresGrafico(){
                     stateChange: function(e){ console.log("stateChange"); },
                     changeState: function(e){ console.log("changeState"); },
                     tooltipShow: function(e){ console.log("tooltipShow"); },
-                    tooltipHide: function(e){ console.log("tooltipHide"); }
+                    tooltipHide: function(e){ console.log("tooltipHide"); },
                 },
+                lines: {   
+                    dispatch: {   
+                        elementClick: function(e){
+                            console.log(e);
+                        },
+                        elementMouseover: function(e){ }
+                    }
+                },
+
                 xAxis: {
                     axisLabel: 'Tiempo (Dias)'
                 },
@@ -163,10 +182,9 @@ function valoresGrafico(){
                     },
                     axisLabelDistance: -10
                 },
-                callback: function(chart){
-                    console.log("!!! lineChart callback !!!");
-                },
-                forceY: [0,0,100]
+
+                
+                forceY: [0,0,110]
             },
             title: {
                 enable: true,
@@ -186,6 +204,11 @@ function valoresGrafico(){
                 css: {
                     'text-align': 'justify',
                     'margin': '10px 13px 0px 7px'
+                }
+            },
+            styles: {
+                css:{
+                    
                 }
             }
         };
@@ -207,7 +230,7 @@ $scope.options1 = {
                     valueFormat: function(d){
                         return d3.format(',.4f')(d);
                     },
-                    duration: 500,
+                    duration: 1000,
                     xAxis: {
                         axisLabel: 'Compañias'
                     },
