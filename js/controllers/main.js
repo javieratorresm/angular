@@ -7,6 +7,16 @@ $scope.inicio = new Date($scope.fin.getFullYear(),
 
 $scope.data = 0;
 
+$scope.$watch("inicio",function(){
+    console.log("cambio inicio");
+    valoresGrafico();
+});
+
+$scope.$watch("fin",function(){
+    console.log("cambio fin");
+    valoresGrafico();
+});
+
 console.log("Fecha: "+$scope.inicio.getDate()+" "+$scope.inicio.getMonth()+" "+$scope.inicio.getFullYear());
 console.log("Fecha: "+$scope.fin.getDate()+" "+$scope.fin.getMonth()+" "+$scope.fin.getFullYear());
 function valoresGrafico(){
