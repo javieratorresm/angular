@@ -1,21 +1,24 @@
-app.controller('tweetsFechaCtrl', function($scope,ConsultaService){
-	$scope.compania = [
+app.controller('tweetsFechaCtrl', function($scope,ConsultaService,fecha,compañia,$mdDialog){
+	$scope.tweets = [];
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.fechaTweets = fecha;
+    $scope.compañiaConsulta = compañia;
+    console.log($scope.fechaTweets);
+    console.log($scope.fechaTweets.getMonth());
+    console.log($scope.fechaTweets.getDate());
+    console.log($scope.fechaTweets.getFullYear());
 
 
+       function tweetsDia(){
+        ConsultaService.gettweetsDia($scope.compañiaConsulta,$scope.fechaTweets.getDate(),$scope.fechaTweets.getMonth()+1,$scope.fechaTweets.getFullYear()).then(function(data){
+            $scope.tweets = data.data;
+            console.log($scope.tweets);
 
-    ];
-       function getMovistar(){
-            ConsultaService.getMovistar()
-            .success(function(data){
-                $scope.compania = data;
-                                console.log('data',data);
-            })
-            .error(function(error){
-                $scope.status = 'Error al consultar por actores';
-                console.log('error');
-            });
-        }
-        getMovistar();
+        });
+    }tweetsDia();
 
 
 });

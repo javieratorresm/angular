@@ -186,11 +186,15 @@ function addDays(date, days) {
                             d3.selectAll('.nv-point').remove();
                             console.log(e);
                             $mdDialog.show({
-                              controller: 'tweetsFechaCtrl',
-                              templateUrl: 'views/tweetsFecha.html',
-                              parent: angular.element(document.body),
-                              targetEvent: e,
-                              clickOutsideToClose:true
+                                locals: {
+                                    fecha: e.point.x,
+                                    compañia: e.series.key
+                                },
+                                controller: 'tweetsFechaCtrl',
+                                templateUrl: 'views/tweetsFecha.html',
+                                parent: angular.element(document.body),
+                                targetEvent: e,
+                                clickOutsideToClose:true
                             });
                         },
                         elementMouseover: function(e){ }

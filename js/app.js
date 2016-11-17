@@ -1,4 +1,4 @@
-var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial'])
+var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet'])
 
     .service('ConsultaService', function($http,$q){
         var urlBase = 'http://localhost:8080/grupo_tbd2-master/tweets';
@@ -59,7 +59,7 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial'])
             return $http.get(urlBase+"/indices/compañias/claro/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia2+"."+mes2+"."+año2);
         };
         this.gettweetsDia = function(compañia,dia,mes,año){
-            return $http.get(urlBase+"/indices/compañias/"+compañia+"/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia+"."+mes+"."+año);
+            return $http.get(urlBase+"/compañias/"+compañia+"/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia+"."+mes+"."+año);
         };
 
     })
