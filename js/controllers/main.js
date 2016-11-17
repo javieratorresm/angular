@@ -1,5 +1,8 @@
 app.controller('main', function($scope,ConsultaService,$q,$mdDialog) {
 
+$scope.cargandoPeriodo = true;
+$scope.cargandoBarra = true;
+
 $scope.fin = new Date();
 $scope.inicio = new Date($scope.fin.getFullYear(),
       $scope.fin.getMonth() - 1,
@@ -94,7 +97,8 @@ function valoresGrafico(){
                                         key: 'Entel', 
                                         color: '#376b9e',
                                     }
-                                ]
+                                ];
+                                $scope.cargandoPeriodo = false;
                             });
                         });
                     });
@@ -143,7 +147,8 @@ function valoresGrafico(){
                                                            
                                                         ]
                                                     }
-                                                ]
+                                                ];
+                                                $scope.cargandoBarra = false;
                             });
                         });
                     });

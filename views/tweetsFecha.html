@@ -9,12 +9,15 @@
         </md-button>
       </div>
     </md-toolbar>
-
+		
+		    	<md-progress-circular md-mode="indeterminate" ng-show="cargandoTweets"></md-progress-circular>
+		 
     <md-dialog-content>
+
       <div class="md-dialog-content">
+      	
         <div ng-repeat="tweetID in tweets track by $index">
-		    <twitter-widget twitter-widget-id="tweetID.id" twitter-widget-options="{}">
-		    </twitter-widget>
+		    <twitter-widget twitter-widget-id="tweetID.id" twitter-widget-options="{}"></twitter-widget>
 		</div>
       </div>
     </md-dialog-content>

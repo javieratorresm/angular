@@ -10,8 +10,12 @@
 		    </div>
 		                        <!-- /.panel-heading -->
 		    <div class="panel-body">
-				<nvd3 options="options1" data="data1"></nvd3>
 
+		    	<div layout="row" layout-sm="column" layout-align="space-around">
+		    		<md-progress-circular md-mode="indeterminate" ng-show="cargandoBarra"></md-progress-circular>
+		    	</div>
+				<nvd3 options="options1" data="data1"></nvd3>
+				<br>
 			</div>
 		</div>
 
@@ -31,10 +35,15 @@
 		    </div>
 		    
 		    <div class="panel-body">
-
+		    	
 				<nvd3 options="options" data="data"></nvd3>
 
 			</div>
+			<br><br>
+			<div layout="row" layout-sm="column" layout-align="center center">
+		    		<md-progress-circular md-mode="indeterminate" ng-show="cargandoPeriodo"></md-progress-circular>
+		    </div>
+		    <br><br>
 		</div>
  
 

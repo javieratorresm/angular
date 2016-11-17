@@ -1,4 +1,5 @@
 app.controller('tweetsFechaCtrl', function($scope,ConsultaService,fecha,compañia,$mdDialog){
+	$scope.cargandoTweets = true;
 	$scope.tweets = [];
     $scope.cancel = function() {
       $mdDialog.cancel();
@@ -15,6 +16,7 @@ app.controller('tweetsFechaCtrl', function($scope,ConsultaService,fecha,compañi
        function tweetsDia(){
         ConsultaService.gettweetsDia($scope.compañiaConsulta,$scope.fechaTweets.getDate(),$scope.fechaTweets.getMonth()+1,$scope.fechaTweets.getFullYear()).then(function(data){
             $scope.tweets = data.data;
+            $scope.cargandoTweets = false;
             console.log($scope.tweets);
 
         });
