@@ -58,6 +58,9 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial'])
              this.getindiceclaroPeriodo = function(dia,mes,año,dia2,mes2,año2){
             return $http.get(urlBase+"/indices/compañias/claro/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia2+"."+mes2+"."+año2);
         };
+        this.gettweetsDia = function(compañia,dia,mes,año){
+            return $http.get(urlBase+"/indices/compañias/"+compañia+"/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia+"."+mes+"."+año);
+        };
 
     })
 
@@ -130,7 +133,15 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial'])
             controller:'indiceCtrlClaro'
 
      })
+        
+
         .otherwise({
             redirectTo: '/home'
           });
+})
+
+    .config(function($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.formatDate = function(date) {
+       return moment(date).format('DD-MM-YYYY');
+    };
 });

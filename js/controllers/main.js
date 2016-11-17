@@ -1,4 +1,4 @@
-app.controller('main', function($scope,ConsultaService,$q) {
+app.controller('main', function($scope,ConsultaService,$q,$mdDialog) {
 
 $scope.fin = new Date();
 $scope.inicio = new Date($scope.fin.getFullYear(),
@@ -17,47 +17,48 @@ $scope.$watch("fin",function(){
     valoresGrafico();
 });
 
+
 console.log("Fecha: "+$scope.inicio.getDate()+" "+$scope.inicio.getMonth()+" "+$scope.inicio.getFullYear());
 console.log("Fecha: "+$scope.fin.getDate()+" "+$scope.fin.getMonth()+" "+$scope.fin.getFullYear());
 function valoresGrafico(){
-            ConsultaService.getindiceclaroPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth(),$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth(),$scope.fin.getFullYear()).then(function(claro){
-                ConsultaService.getindicemovistarPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth(),$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth(),$scope.fin.getFullYear()).then(function(movistar){
-                    ConsultaService.getindiceentelPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth(),$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth(),$scope.fin.getFullYear()).then(function(entel){
-                        ConsultaService.getindicewomPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth(),$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth(),$scope.fin.getFullYear()).then(function(wom){
-                            ConsultaService.getindicevtrPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth(),$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth(),$scope.fin.getFullYear()).then(function(vtr){
+            ConsultaService.getindiceclaroPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth()+1,$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth()+1,$scope.fin.getFullYear()).then(function(claro){
+                ConsultaService.getindicemovistarPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth()+1,$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth()+1,$scope.fin.getFullYear()).then(function(movistar){
+                    ConsultaService.getindiceentelPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth()+1,$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth()+1,$scope.fin.getFullYear()).then(function(entel){
+                        ConsultaService.getindicewomPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth()+1,$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth()+1,$scope.fin.getFullYear()).then(function(wom){
+                            ConsultaService.getindicevtrPeriodo($scope.inicio.getDate(),$scope.inicio.getMonth()+1,$scope.inicio.getFullYear(),$scope.fin.getDate(),$scope.fin.getMonth()+1,$scope.fin.getFullYear()).then(function(vtr){
                                 console.log(movistar);
                                 var movistarData=[],claroData=[],vtrData=[],womData=[],entelData=[];
                                 var i = 1;
                                 angular.forEach(movistar.data, function(value, key){
-                                    movistarData.push({x: i,y: value.desaprobacion*100});
+                                    movistarData.push({x: addDays($scope.inicio, i),y: value.desaprobacion*100});
                                     console.log(value.desaprobacion);
                                     i = i+1;
                                  });
 
                                 i=1
                                 angular.forEach(entel.data, function(value, key){
-                                    entelData.push({x: i,y: value.desaprobacion*100});
+                                    entelData.push({x: addDays($scope.inicio, i),y: value.desaprobacion*100});
                                     console.log(value.desaprobacion);
                                     i = i+1;
                                  });
 
                                 i=1
                                 angular.forEach(vtr.data, function(value, key){
-                                    vtrData.push({x: i,y: value.desaprobacion*100});
+                                    vtrData.push({x: addDays($scope.inicio, i),y: value.desaprobacion*100});
                                     console.log(value.desaprobacion);
                                     i = i+1;
                                  });
 
                                 i=1
                                 angular.forEach(wom.data, function(value, key){
-                                    womData.push({x: i,y: value.desaprobacion*100});
+                                    womData.push({x: addDays($scope.inicio, i),y: value.desaprobacion*100});
                                     console.log(value.desaprobacion);
                                     i = i+1;
                                  });
 
                                 i=1
                                 angular.forEach(claro.data, function(value, key){
-                                    claroData.push({x: i,y: value.desaprobacion*100});
+                                    claroData.push({x: addDays($scope.inicio, i),y: value.desaprobacion*100});
                                     console.log(value.desaprobacion);
                                     i = i+1;
                                  });
@@ -149,8 +150,13 @@ function valoresGrafico(){
                });
             });
         }
-        getDesaprobacion();      
+        getDesaprobacion();  
 
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+};
 
   $scope.options = {
             chart: {
@@ -176,14 +182,27 @@ function valoresGrafico(){
                 lines: {   
                     dispatch: {   
                         elementClick: function(e){
+                            d3.selectAll('.nvtooltip').remove();
+                            d3.selectAll('.nv-point').remove();
                             console.log(e);
+                            $mdDialog.show({
+                              controller: 'tweetsFechaCtrl',
+                              templateUrl: 'views/tweetsFecha.html',
+                              parent: angular.element(document.body),
+                              targetEvent: e,
+                              clickOutsideToClose:true
+                            });
                         },
                         elementMouseover: function(e){ }
                     }
                 },
 
                 xAxis: {
-                    axisLabel: 'Tiempo (Dias)'
+                    axisLabel: 'Tiempo (Dias)',
+                    tickFormat: function(d){
+                        return d3.time.format('%b %d')(new Date(d));
+                    },
+                    rotateLabels: -45
                 },
                 yAxis: {
                     axisLabel: 'Reputación (Indice)',
@@ -192,7 +211,7 @@ function valoresGrafico(){
                     },
                     axisLabelDistance: -10
                 },
-
+                focusShowAxisX: false,
                 
                 forceY: [0,0,110]
             },
