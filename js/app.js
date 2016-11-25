@@ -1,4 +1,4 @@
-var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet'])
+var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet','datamaps'])
 
     .service('ConsultaService', function($http,$q){
         var urlBase = 'http://localhost:8080/grupo_tbd2-master/tweets';
@@ -133,6 +133,11 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet']
             controller:'indiceCtrlClaro'
 
      })
+        .when ('/mapaCalor',{
+            templateUrl:'views/mapa.html',
+            controller:'mapaCtrl'
+
+     })
         
 
         .otherwise({
@@ -145,3 +150,9 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet']
        return moment(date).format('DD-MM-YYYY');
     };
 });
+
+
+
+
+
+
