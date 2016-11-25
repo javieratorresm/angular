@@ -1,4 +1,4 @@
-var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet','datamaps'])
+var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet'])
 
     .service('ConsultaService', function($http,$q){
         var urlBase = 'http://localhost:8080/grupo_tbd2-master/tweets';
