@@ -61,6 +61,18 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet']
         this.gettweetsDia = function(compañia,dia,mes,año){
             return $http.get(urlBase+"/compañias/"+compañia+"/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia+"."+mes+"."+año);
         };
+        this.getIndicesComunasCompañias = function(compañia){
+            return $http.get(urlBase+"/indices/compañias/"+compañia+"/comunas");
+        };
+        this.getIndicesComunasTodas = function(){
+            var deferred = $q.defer();
+            $http.get(urlBase+"/indices/comunas").success(
+                function (data, status) {
+                    deferred.resolve(data);
+                    console.log("Datos obtenidos",status,data);
+                })
+            return deferred.promise;
+        };
 
     })
 
