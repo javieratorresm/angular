@@ -61,8 +61,20 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet']
         this.gettweetsDia = function(compañia,dia,mes,año){
             return $http.get(urlBase+"/compañias/"+compañia+"/periodos/inicio/"+dia+"."+mes+"."+año+"/fin/"+dia+"."+mes+"."+año);
         };
+        this.gettweetsComuna = function(compañia,comuna){
+            return $http.get(urlBase+"/compañias/"+compañia+"/comunas/"+comuna);
+        };
+        this.gettweetsComunaTodo = function(comuna){
+            return $http.get(urlBase+"/comunas/"+comuna);
+        };
         this.getIndicesComunasCompañias = function(compañia){
-            return $http.get(urlBase+"/indices/compañias/"+compañia+"/comunas");
+            var deferred = $q.defer();
+            $http.get(urlBase+"/indices/compañias/"+compañia+"/comunas").success(
+                function (data, status) {
+                    deferred.resolve(data);
+                    console.log("Datos obtenidos",status,data);
+                })
+            return deferred.promise;
         };
         this.getIndicesComunasTodas = function(){
             var deferred = $q.defer();
@@ -160,8 +172,33 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet']
     .config(function($mdDateLocaleProvider) {
     $mdDateLocaleProvider.formatDate = function(date) {
        return moment(date).format('DD-MM-YYYY');
-    };
-});
+        };
+    })
+    .config(function($mdIconProvider) {
+        $mdIconProvider
+          .icon('movistar', 'img/v2/movistar.png', 24)
+          .icon('claro', 'img/v2/claroTitle.png', 24)
+          .icon('vtr', 'img/v2/vtr.png', 24)
+          .icon('wom', 'img/v2/womTitle.png', 24)
+          .icon('entel', 'img/v2/entel.png', 24)
+          .icon('todos', 'img/caca.svg', 24);
+      })
+    .run(function($templateRequest) {
+
+        var urls = [
+          'img/v2/movistar.png',
+          'img/v2/claroTitle.png',
+          'img/v2/vtr.png',
+          'img/v2/womTitle.png',
+          'img/v2/entel.png',
+          'img/todo.png'
+        ];
+
+        angular.forEach(urls, function(url) {
+          $templateRequest(url);
+        });
+
+    });;
 
 
 

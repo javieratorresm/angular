@@ -1,7 +1,13 @@
 <div class="panel panel-default">
 	<div class="panel-heading">
-	<i class="fa fa-map-o""></i>  Mapa de Calor
+		
+		<div layout="row" layout-align="space-between start">
+			<h4>Muestra la concentración de reclamos por sector para cada compañia, mientras mas oscuro mas alta es la desaprobación de la compañia.</h4>
+		  	<md-button class="md-primary md-raised" ng-click="mostrarMenuCompanias()">Compañia</md-button>
+		</div>
+	
 	</div>
+
 	<div id = "container_mapa" class="panel-body">
 		<h5 align = "center">
 			Mapa de calor que muestra la concentración de tweets para cada compañia según comuna.	

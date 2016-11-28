@@ -1,8 +1,9 @@
-app.controller('mapaCtrl', function($scope,ConsultaService,$q){
+app.controller('mapaCtrl', function($scope,ConsultaService,$q,$timeout, $mdBottomSheet, $mdToast,$mdDialog,$compile){
 
 $scope.datos = [];
 $scope.tweets = [];
-$scope.compañia = "Todos";
+$scope.compañia = "Todas";
+$scope.comuna = "";
 $scope.map = 0;
 
 $scope.coloresEntel = ['#f7fbff',
@@ -126,9 +127,15 @@ function mapaCalor(){
   });
 
   $scope.map.data.addListener('click', function(e) {
+      $scope.comuna = e.feature.getProperty('NOM_COM');
     console.log(e);
-    infoWindow.setContent('<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' +
-      e.feature.getProperty('NOM_COM') + ' : ' +$scope.datos[0].desaprobacion+'</div>');
+    var contentString = '<div style="line-height:1.00;overflow:hidden;white-space:nowrap;">' 
+                              +'<h5>'+ e.feature.getProperty('NOM_COM') + ' : ' +Number((getDesaprobacion(e.feature.getProperty('NOM_COM'))).toFixed(1))+'%'
+                              +'</h5>'
+                              +'<button class="button button-outline button-positive" ng-click="mostrarTweets()" align="center">Tweets</button>'
+                        +'</div>';
+    var compiled = $compile(contentString)($scope);
+    infoWindow.setContent(compiled[0]);
 
     var anchor = new google.maps.MVCObject();
     anchor.set("position", e.latLng);
@@ -142,7 +149,7 @@ function mapaCalor(){
 
 
   function getDatos(){
-      if($scope.compañia == "Todos"){
+      if($scope.compañia == "Todas"){
             ConsultaService.getIndicesComunasTodas().then(function(indices){
                   $scope.datos = indices;
                   mapaCalor();
@@ -153,16 +160,28 @@ function mapaCalor(){
             ConsultaService.getIndicesComunasCompañias($scope.compañia).then(function(indices){
                   console.log(indices);
                   $scope.datos = indices;
+                  mapaCalor();
             });
       }
       
   }getDatos();
 
 
+  function getDesaprobacion(comuna){
+      var desaprobacion = 0;
+      angular.forEach($scope.datos, function(value, key){
+            if(comuna == value.comuna){
+                  desaprobacion = value.desaprobacion*100;
+            }
+      });
+      return desaprobacion;
+  };
+
+
   function getColor(comuna){
       var color = '';
       var arregloColores = [];
-      if($scope.compañia == "Todos"){
+      if($scope.compañia == "Todas"){
             arregloColores = $scope.coloresTodo;
       }
       else if($scope.compañia == "Movistar"){
@@ -231,5 +250,34 @@ function mapaCalor(){
       });
       return color;
   };
+
+  $scope.mostrarTweets= function(){
+      var comuna = $scope.comuna;
+      console.log("MMMM?",comuna);
+      $mdDialog.show({
+                                locals: {
+                                    comuna: comuna,
+                                    compañia: $scope.compañia
+                                },
+                                controller: 'tweetsComunaCtrl',
+                                templateUrl: 'views/tweetsComuna.html',
+                                parent: angular.element(document.body),
+                                clickOutsideToClose:true
+                            });
+  };
+  $scope.mostrarMenuCompanias = function() {
+          $scope.alert = '';
+          $mdBottomSheet.show({
+            parent: document.getElementById('container_mapa'),
+            templateUrl: 'views/menuMapa.html',
+            controller: 'menuMapaCtrl',
+            clickOutsideToClose: true
+          }).then(function(clickedItem) {
+                  $scope.compañia = clickedItem;
+                  console.log("SCOPECOMPAÑIA",$scope.compañia);
+                  getDatos();
+                  console.log("DATOSCOMPAÑIA",$scope.datos);
+            });
+        };
 
 });

@@ -1,0 +1,17 @@
+<md-bottom-sheet class="md-grid" layout="column">
+  <div layout="row" layout-align="center center" ng-cloak>
+    <h4>Seleccione una de las siguientes compañias para mostrar los datos en el mapa.</h4>
+  </div>
+  <div ng-cloak>
+    <md-list flex layout="row" layout-align="center center">
+      <md-list-item ng-repeat="item in items">
+        <div>
+          <md-button class="md-grid-item-content" ng-click="listItemClick($index)">
+            <img src="/img/v2/{{ item.icon }}.png" alt="movistarlogo" style="height:35px;">
+            <div class="md-grid-text"> {{ item.name }} </div>
+          </md-button>
+        </div>
+      </md-list-item>
+    </md-list>
+  </div>
+</md-bottom-sheet>
