@@ -67,9 +67,7 @@ $scope.coloresTodo = ['#ffffff',
                         '#252525',
                         '#000000'];
 
-var leyenda = '/../../img/mapa_calientev2.png';
-        
-
+var leyenda = '/../../img/leyendas/todas.png';
 function mapaCalor(){
       console.log("Datos del controlador:",$scope.datos);
       var mapOptions = {
@@ -298,9 +296,30 @@ function mapaCalor(){
             clickOutsideToClose: true
           }).then(function(clickedItem) {
                   $scope.compañia = clickedItem;
+                  algo = $scope.compañia;
                   console.log("SCOPECOMPAÑIA",$scope.compañia);
                   getDatos();
                   console.log("DATOSCOMPAÑIA",$scope.datos);
+                  switch ($scope.compañia) {
+                      case 'Todas':
+                          leyenda = '/../../img/leyendas/todas.png';
+                          break;
+                      case 'Movistar':
+                          leyenda = '/../../img/leyendas/movistar.png';
+                          break;
+                      case 'Entel':
+                          leyenda = '/../../img/leyendas/entel.png';
+                          break;
+                      case 'Claro':
+                          leyenda = '/../../img/leyendas/claro.png';
+                          break;
+                      case 'Vtr':
+                          leyenda = '/../../img/leyendas/vtr.png';
+                          break;
+                      case 'Wom':
+                          leyenda = '/../../img/leyendas/wom.png';
+                          break;
+                  }
             });
         };
 
