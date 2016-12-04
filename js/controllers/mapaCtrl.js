@@ -67,6 +67,8 @@ $scope.coloresTodo = ['#ffffff',
                         '#252525',
                         '#000000'];
 
+var leyenda = '/../../img/mapa_calientev2.png';
+        
 
 function mapaCalor(){
       console.log("Datos del controlador:",$scope.datos);
@@ -79,8 +81,20 @@ function mapaCalor(){
     mapTypeControlOptions: {
       mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN]
     }
+
   };
 
+
+ 
+   var legend = document.getElementById('legend');
+
+    var div = document.createElement('div');
+    
+    div.innerHTML = '<img src="' + leyenda + '"> <br>&nbsp;[ 0-11] [11-22] [22-33] [33-44] [44-55] [55-66] [66-77] [77-88] [88-100]';
+    legend.appendChild(div);
+    
+
+ 
   
   var infoWindow = new google.maps.InfoWindow({
     content: ""
@@ -89,6 +103,7 @@ function mapaCalor(){
   
   $scope.map = new google.maps.Map(document.getElementById('mapa'), mapOptions);
 
+  $scope.map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
   
   //$scope.map.data = new google.maps.Data();
   $scope.map.data.loadGeoJson('datosGeo/SoloSantiago.geojson');
