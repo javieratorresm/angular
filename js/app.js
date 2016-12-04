@@ -162,6 +162,11 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet']
             controller:'mapaCtrl'
 
      })
+        .when ('/ranking',{
+            templateUrl:'views/ranking.html',
+            controller:'rankingCtrl'
+
+     })
         
 
         .otherwise({
@@ -174,31 +179,10 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet']
        return moment(date).format('DD-MM-YYYY');
         };
     })
-    .config(function($mdIconProvider) {
-        $mdIconProvider
-          .icon('movistar', 'img/v2/movistar.png', 24)
-          .icon('claro', 'img/v2/claroTitle.png', 24)
-          .icon('vtr', 'img/v2/vtr.png', 24)
-          .icon('wom', 'img/v2/womTitle.png', 24)
-          .icon('entel', 'img/v2/entel.png', 24)
-          .icon('todos', 'img/caca.svg', 24);
-      })
-    .run(function($templateRequest) {
+    .config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('dark-blue').backgroundPalette('light-blue').dark();
 
-        var urls = [
-          'img/v2/movistar.png',
-          'img/v2/claroTitle.png',
-          'img/v2/vtr.png',
-          'img/v2/womTitle.png',
-          'img/v2/entel.png',
-          'img/todo.png'
-        ];
-
-        angular.forEach(urls, function(url) {
-          $templateRequest(url);
-        });
-
-    });;
+    });
 
 
 

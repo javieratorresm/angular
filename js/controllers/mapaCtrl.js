@@ -84,15 +84,16 @@ function mapaCalor(){
 
   };
 
-
  
    var legend = document.getElementById('legend');
 
     var div = document.createElement('div');
+    div.setAttribute("id", "Div1");
     
     div.innerHTML = '<img src="' + leyenda + '"> <br>&nbsp;[ 0-11] [11-22] [22-33] [33-44] [44-55] [55-66] [66-77] [77-88] [88-100]';
     legend.appendChild(div);
-    
+   console.log("LEYENDA:",legend);
+
 
  
   
@@ -167,6 +168,11 @@ function mapaCalor(){
       if($scope.compañia == "Todas"){
             ConsultaService.getIndicesComunasTodas().then(function(indices){
                   $scope.datos = indices;
+                  var div = document.getElementById('Div1');
+                  if(div != null){
+                        div.parentNode.removeChild(div);
+                        console.log("DIV",div);
+                  }
                   mapaCalor();
             });
             
@@ -175,6 +181,9 @@ function mapaCalor(){
             ConsultaService.getIndicesComunasCompañias($scope.compañia).then(function(indices){
                   console.log(indices);
                   $scope.datos = indices;
+                  var div = document.getElementById('Div1');
+                  div.parentNode.removeChild(div);
+                  console.log("DIV",div);
                   mapaCalor();
             });
       }

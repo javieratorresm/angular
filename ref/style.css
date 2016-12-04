@@ -28,7 +28,7 @@ background: #000;
 }
 #container_mapa {
 
-	padding-top:50%;
+	padding-top:49%;
 	position: relative;
 }
 .bottomSheetdemoBasicUsage .md-inline-list-icon-label {
@@ -76,5 +76,6 @@ background: #000;
     display: inline-block;
     font-size: 16px;
 }
+
 
 
