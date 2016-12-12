@@ -1,31 +1,34 @@
-<md-card md-theme="dark-blue">
-        <md-card-header>
-          <md-card-avatar>
-            <img class="md-user-avatar" src="http://pbs.twimg.com/profile_images/571148668363747328/FqvwTfFs_normal.jpeg"/>
-          </md-card-avatar>
-          <md-card-header-text>
-            <span class="md-title">{Usuario}</span>
-            <span class="md-subhead">{Puntaje}</span>
-          </md-card-header-text>
-        </md-card-header>
-        <img ng-src="https://pbs.twimg.com/profile_banners/140644805/1404937041" class="md-card-image" alt="Washed Out">
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">In-card mixed actions</span>
-            <span class="md-subhead">Reversed</span>
-          </md-card-title-text>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="start center">
-          <md-button>Tweets de {Usuario}</md-button>
-          <md-card-icon-actions>
-            <md-button class="md-icon-button" aria-label="toggle">
-              <md-icon md-svg-icon="md-toggle-arrow"></md-icon>
-            </md-button>
-          </md-card-icon-actions>
-        </md-card-actions>
-        <md-card-content>
-          <p>
-            {Descripcion usuario}
-          </p>
-        </md-card-content>
-</md-card>
+<style>
+      
+      #boton{
+      	background-color: #335fbd;
+
+      }
+</style>
+
+
+<div class="panel panel-default">
+	<div class= "panel-heading">
+		<h3>Ranking de usuarios:</h3>
+		<h5>Muestra el ranking de los usuarios mas influyentes dentro de la plataforma, al seleccionar uno muestra información adicional de éste</h5>
+	</div>
+	<div class="panel-body">
+		<div layout="row" layout-sm="column" layout-align="center center">
+		    		<md-progress-circular md-mode="indeterminate" ng-show="cargandoRanking"></md-progress-circular>
+		</div>
+		<div ng-repeat="user in ranking track by $index">
+		     <div flex layout="row">
+		 		<md-button id = "boton" flex layout="row" layout-align="space-between start" class="md-primary md-raised" ng-click="mostrarUsuario($index)">
+			 		<img class="md-user-avatar" src="{{user.profile_image}}"/>
+					<h4> {{user.screen_name}}</h4>
+					<h4> {{user.ranking}}</h4>
+				</md-button>
+			</div>
+		</div>
+
+
+		
+
+
+	</div>
+</div>

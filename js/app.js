@@ -64,6 +64,12 @@ var app = angular.module('angularSpa', ['ngRoute','nvd3','ngMaterial','ngtweet']
         this.gettweetsComuna = function(compañia,comuna){
             return $http.get(urlBase+"/compañias/"+compañia+"/comunas/"+comuna);
         };
+        this.getRanking = function(){
+            return $http.get(urlBase+"/ranking");
+        };
+        this.gettweetsUsuario = function(usuario){
+            return $http.get(urlBase+"/usuarios/"+usuario);
+        };
         this.gettweetsComunaTodo = function(comuna){
             return $http.get(urlBase+"/comunas/"+comuna);
         };
